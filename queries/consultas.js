@@ -1,7 +1,5 @@
 import db from "../config/db.js"
 
-//fx para conectar a la bbdd
-
 //1__ mostrar data
 const verCanciones = async () => {
   try {
