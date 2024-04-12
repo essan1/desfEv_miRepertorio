@@ -34,9 +34,48 @@ const agregarCancion = async (datos) => {
 };
 
 
+//3__ delete Cancion
+const eliminarCancion = async (id) => {
+      try {
+        const consultaCanciones = {
+          text: "delete from canciones where id = $1 returning *",
+          values: [id]
+        };
+        const result = await db.query(consultaCanciones);
+        //necesimtamos validar
+        if (result.rowCount == 0){
+            throw new Error('Cancion no encontrada!')
+        }
+        return result.rows;
+      } catch (err) {
+        console.log(err.message);
+      }
+}
+
+
+//3__ editar cancion 
+const editarCancion = async (cancion) => {
+          try {
+            const consultaCanciones = {
+              text: "update canciones set titulo=$1, artista=$2, tono=$3 where id=$4 returning *",
+              values: cancion,
+            };
+            const result = await db.query(consultaCanciones);
+            //necesimtamos validar
+            if (result.rowCount == 0) {
+              throw new Error("Cancion no encontrada!");
+            }
+            return result.rows;
+          } catch (err) {
+            console.log(err.message);
+          }
+}
+
 
 
 export {    
     verCanciones,
-    agregarCancion
+    agregarCancion,
+    eliminarCancion,
+    editarCancion
 }

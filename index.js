@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json());
 
 //middleware para recibir form
-app.use(express.urlencoded((false)));
+app.use(express.urlencoded((false))); //no need. fx in html
 
 //middleware para routes
 app.use(router);
