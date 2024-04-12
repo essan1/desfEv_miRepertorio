@@ -7,7 +7,6 @@ const verCanciones = async () => {
       text: "select * from canciones",
     };
     const result = await db.query(consultaCanciones);
-    /* console.log(result.rows); */
     return result.rows;
   } catch (err) {
     console.log(err.message);
